@@ -2,9 +2,19 @@
 
 const express       = require("express");
 const app           = express();
+const messages       = require("./messages");
+
+console.log(messages["letters"]);
+
+
 
 app.get("/", function(req,res){
-    response.send("<h1 style=\"text-align:center\" >Hey Friends, Welcome to my app</h1>" );
+    let allLetters = " ";
+    for(let i = 0;i<messages["letters"].length; i++){
+        allLetters += `${messages["letters"][i]}  <br>`; 
+    }
+    res.send(allLetters);
+    // response.send("<h1 style=\"text-align:center\" >Hey Friends, Welcome to my app</h1>" );
 });
 
 app.listen(3000, function(error){
