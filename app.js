@@ -17,6 +17,11 @@ app.get("/", function(req,res){
     // response.send("<h1 style=\"text-align:center\" >Hey Friends, Welcome to my app</h1>" );
 });
 
+app.get("/users/:name", function(req,res){
+    res.send(req["params"]["name"]);
+
+});
+
 app.listen(3000, function(error){
     if(error){
         console.log("some error occurred");
