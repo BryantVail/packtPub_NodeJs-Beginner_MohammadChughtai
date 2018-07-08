@@ -1,0 +1,22 @@
+{
+  "name": "packtpub_nodejs-beginner_mohammadchughtai",
+  "version": "1.0.0",
+  "description": "Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryantVail/packtPub_NodeJs-Beginner_MohammadChughtai.git"
+  },
+  "author": "BryantV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BryantVail/packtPub_NodeJs-Beginner_MohammadChughtai/issues"
+  },
+  "homepage": "https://github.com/BryantVail/packtPub_NodeJs-Beginner_MohammadChughtai#readme",
+  "dependencies": {
+    "eslint": "^5.0.1"
+  }
+}
