@@ -1,32 +1,59 @@
 //app.js
-
+const serverConfig  = require("./config/keys"); 
 const express       = require("express");
 const app           = express();
-const messages       = require("./messages");
+const messages      = require("./messages");
+const fs            = require("fs");
+const bodyParser    = require("body-parser");
 
-console.log(messages["letters"]);
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
-
+app.use(express.static(__dirname+"/"));
 
 app.get("/", function(req,res){
-    let allLetters = " ";
-    for(let i = 0;i<messages["letters"].length; i++){
-        allLetters += `${messages["letters"][i]}  <br>`; 
-    }
-    res.send(allLetters);
-    // response.send("<h1 style=\"text-align:center\" >Hey Friends, Welcome to my app</h1>" );
+    fs.readFile(__dirname+"/index.html",function(err, data){
+        if(!err){
+            res.write(data);
+
+        }
+        res.end();
+    }).catch(function(err){
+        console.log(err);
+    });
 });
 
-app.get("/users/:name", function(req,res){
-    res.send(req["params"]["name"]);
-
+app.get("/status", function(req,res){
+    fs.readFile(__dirname+"/posts.json", function(err, data){
+        if(!err){
+            res.send(JSON.parse(data));
+        }else{
+            console.log(err);
+        }
+    });
 });
 
-app.listen(3000, function(error){
-    if(error){
-        console.log("some error occurred");
+app.post("/status/new", function(req,res){
+    let status = JSON.stringify(
+        {
+            name:req["body"]["name"],
+            status:req["body"]["status"]
+        }
+    );
+
+    fs.writeFile(__dirname + "/posts.json",
+    status,
+    function(err){
+            console.log(err);
+        }
+    );
+});
+
+app.listen(serverConfig.server.port, function(err){
+    if(err){
+        console.log("err: "+err);
     }else{
-        console.log("server running on port 3000");
+        console.log("listening on port: " + serverConfig.server.port);
     }
 });
 
