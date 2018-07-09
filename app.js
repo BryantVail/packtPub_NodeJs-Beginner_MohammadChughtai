@@ -47,6 +47,7 @@ app.post("/status/new", function(req,res){
             console.log(err);
         }
     );
+    res.redirect("/");
 });
 
 app.listen(serverConfig.server.port, function(err){
