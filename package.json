@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/BryantVail/packtPub_NodeJs-Beginner_MohammadChughtai#readme",
   "dependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "express": "^4.16.3",
     "http": "0.0.0"
   }
